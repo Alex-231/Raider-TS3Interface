@@ -3,6 +3,8 @@
 #include <utility>
 #include <string>
 
+using namespace std;
+
 VoIPClient::VoIPClient()
 {
 }
@@ -197,13 +199,19 @@ void onServerErrorEvent(uint64 serverConnectionHandlerID, const char* errorMessa
 	printf("Error for server %llu: %s %s\n", (unsigned long long)serverConnectionHandlerID, errorMessage, extraMessage);
 }
 
-unsigned int VoIPClient::error;
-uint64 VoIPClient::scHandlerID;
-char* VoIPClient::version;
-char* VoIPClient::identity;
+unsigned int error;
+uint64 scHandlerID;
+char* version;
+char* identity_;
 
-bool VoIPClient::StartClient(char* username, char* ipAddr, int port, ClientUIFunctions callbacks, char* path)
+bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks)
 {
+	//Debug Logging
+	SharedAPI::Log("StartClient Called");
+	SharedAPI::Log(username);
+	SharedAPI::Log(ipAddr);
+	SharedAPI::Log(path);
+
 	/* Callback function pointers */
 	/* It is sufficient to only assign those callback functions you are using. When adding more callbacks, add those function pointers here. */
 	callbacks.onConnectStatusChangeEvent = onConnectStatusChangeEvent;
@@ -223,8 +231,8 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, ClientUIFun
 	if (error != ERROR_ok) {
 		char* errormsg;
 		if (ts3client_getErrorMessage(error, &errormsg) == ERROR_ok) {
-			SharedAPI::logCallback("Error initialzing serverlib:");
-			SharedAPI::logCallback(errormsg);
+			SharedAPI::Log("Error initialzing serverlib:");
+			SharedAPI::Log(errormsg);
 			ts3client_freeMemory(errormsg);
 		}
 		return false;
@@ -232,57 +240,57 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, ClientUIFun
 
 	/* Spawn a new server connection handler using the default port and store the server ID */
 	if ((error = ts3client_spawnNewServerConnectionHandler(0, &scHandlerID)) != ERROR_ok) {
-		SharedAPI::logCallback("Error spawning server connection handler:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Error spawning server connection handler:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 
 	/* Open default capture device */
 	/* Passing empty string for mode and NULL or empty string for device will open the default device */
 	if ((error = ts3client_openCaptureDevice(scHandlerID, "", NULL)) != ERROR_ok) {
-		SharedAPI::logCallback("Error opening capture device:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Error opening capture device:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 	}
 
 	/* Open default playback device */
 	/* Passing empty string for mode and NULL or empty string for device will open the default device */
 	if ((error = ts3client_openPlaybackDevice(scHandlerID, "", NULL)) != ERROR_ok) {
-		SharedAPI::logCallback("Error opening playback device:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Error opening playback device:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 	}
 
 	/* Create a new client identity */
 	/* In your real application you should do this only once, store the assigned identity locally and then reuse it. */
-	if ((error = ts3client_createIdentity(&identity)) != ERROR_ok) {
-		SharedAPI::logCallback("Error creating identity:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+	if ((error = ts3client_createIdentity(&identity_)) != ERROR_ok) {
+		SharedAPI::Log("Error creating identity:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 
 	/* Connect to server on localhost:9987 with nickname "client", no default channel, no default channel password and server password "secret" */
-	if ((error = ts3client_startConnection(scHandlerID, identity, ipAddr, port, username, NULL, "", "secret")) != ERROR_ok) {
-		SharedAPI::logCallback("Error connecting to server:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+	if ((error = ts3client_startConnection(scHandlerID, identity_, ipAddr, port, username, NULL, "", "secret")) != ERROR_ok) {
+		SharedAPI::Log("Error connecting to server:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 
-	ts3client_freeMemory(identity);  /* Release dynamically allocated memory */
-	identity = NULL;
+	ts3client_freeMemory(identity_);  /* Release dynamically allocated memory */
+	identity_ = "";
 
-	SharedAPI::logCallback("Client lib initialized and running");
+	SharedAPI::Log("Client lib initialized and running");
 
 	/* Query and print client lib version */
 	if ((error = ts3client_getClientLibVersion(&version)) != ERROR_ok) {
-		SharedAPI::logCallback("Failed to get clientlib version:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Failed to get clientlib version:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 
-	SharedAPI::logCallback("Client lib version:");
-	SharedAPI::logCallback(version);
+	SharedAPI::Log("Client lib version:");
+	SharedAPI::Log(version);
 
-	ts3client_freeMemory(version);  /* Release dynamically allocated memory */
-	version = NULL;
+	//ts3client_freeMemory(version);  /* Release dynamically allocated memory */
+	version = "";
 
 	SLEEP(500);
 
@@ -293,8 +301,8 @@ bool VoIPClient::StopClient()
 {
 	/* Disconnect from server */
 	if ((error = ts3client_stopConnection(scHandlerID, "leaving")) != ERROR_ok) {
-		SharedAPI::logCallback("Error stopping connection:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Error stopping connection:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 
@@ -302,15 +310,15 @@ bool VoIPClient::StopClient()
 
 	/* Destroy server connection handler */
 	if ((error = ts3client_destroyServerConnectionHandler(scHandlerID)) != ERROR_ok) {
-		SharedAPI::logCallback("Error destroying clientlib:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Error destroying clientlib:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 
 	/* Shutdown client lib */
 	if ((error = ts3client_destroyClientLib()) != ERROR_ok) {
-		SharedAPI::logCallback("Failed to destroy clientlib:");
-		SharedAPI::logCallback((char*)std::to_string(error).c_str());
+		SharedAPI::Log("Failed to destroy clientlib:");
+		SharedAPI::Log((char*)std::to_string(error).c_str());
 		return false;
 	}
 

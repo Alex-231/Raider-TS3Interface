@@ -69,32 +69,32 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include\teamspeak;C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\include\;C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include\teamspeak;C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath)</IncludePath>
+    <IncludePath>..\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\lib;C:\Users\Alex\Documents\GitHub\Raider\Assets\Third Party Assets\ts3_sdk_3.0.3.2\include;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\include\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\lib;C:\Users\Alex\Documents\GitHub\Raider\Assets\Third Party Assets\ts3_sdk_3.0.3.2\include;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\include\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link />
     <Link>
       <AdditionalDependencies>ts3client_win32.lib;ts3server_win32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,10 +102,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ts3client_win64.lib;ts3server_win64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -116,12 +116,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ts3client_win32.lib;ts3server_win32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -132,14 +132,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ts3client_win64.lib;ts3server_win64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

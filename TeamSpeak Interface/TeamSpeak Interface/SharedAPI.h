@@ -1,6 +1,9 @@
 #pragma once
 
 #include <teamspeak/clientlib.h>
+#include <string>
+
+using namespace std;
 
 //Since both of these are the same, 
 //there's no point in doing this, right?
@@ -13,7 +16,7 @@ extern "C"
 {
 	EXPORT void SetupLogging(void(*_logCallback)(char* message));
 	//VoIPClient bool StartClient(char* username, char* ipAddr, void(*disconnectCallback)(int exitCode, char* exitDetails));
-	EXPORT bool StartClient(char* username, char* ipAddr, int port, ClientUIFunctions callbacks, char* path);
+	EXPORT bool StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks);
 	EXPORT bool StopClient();
 	EXPORT bool StartServer();
 }
@@ -23,6 +26,9 @@ class SharedAPI
 public:
 	SharedAPI();
 	~SharedAPI();
-	static void(*SharedAPI::logCallback)(char* message);
+
+	static void Log(char* message);
+
+	//void(*SharedAPI::logCallback)(string message);
 };
 

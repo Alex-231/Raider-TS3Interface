@@ -3,17 +3,16 @@
 #include <xstring>
 #include <teamspeak/clientlib.h>
 
+#include <string>
+
+using namespace std;
+
 static class VoIPClient
 {
 public:
 	VoIPClient();
 	~VoIPClient();
-	static bool VoIPClient::StartClient(char* username, char* ipAddr, int port, ClientUIFunctions callbacks, char* path);
+	static bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks);
 	static bool VoIPClient::StopClient();
-
-	static unsigned int VoIPClient::error;
-	static uint64 VoIPClient::scHandlerID;
-	static char* VoIPClient::version;
-	static char* VoIPClient::identity;
 };
 
