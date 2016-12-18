@@ -27,6 +27,9 @@
 *.out
 *.app
 
+# Unity meta files that might slip in.
+*.meta
+
 # =========================
 # Operating System Files
 # =========================

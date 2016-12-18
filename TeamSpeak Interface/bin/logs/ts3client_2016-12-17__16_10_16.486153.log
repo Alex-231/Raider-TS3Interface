@@ -1,0 +1,21 @@
+
+
+==================================================================================================================================
+
+2016-12-17 16:10:16.487655|WARNING |              |   |User-Logging enabled but onUserLoggingMessageEvent callback is NULL. No User-Logging will take place
+2016-12-17 16:10:16.493158|INFO    |              |   |TeamSpeak 3 Client 3.0.3.2 (2015-06-10 10:47:37) SDK
+2016-12-17 16:10:16.501665|INFO    |              |   |SystemInformation: Windows 8 (9200) x64 (AMD or Intel) Binary: 32bit
+2016-12-17 16:10:16.504666|INFO    |              |   |Using hardware aes
+2016-12-17 16:10:16.540692|DEBUG   |Direct Sound  |   |setting timer resolution to 1ms
+2016-12-17 16:10:16.619251|DEBUG   |Windows Audio Session|   |WAS::openDevice-enter
+2016-12-17 16:10:16.638761|DEBUG   |Windows Audio Session|   |WAS Buffer size: 1056
+2016-12-17 16:10:16.641263|DEBUG   |Windows Audio Session|   |WAS::openDevice-leave
+2016-12-17 16:10:16.643765|INFO    |PreProSpeex   |1  |Speex version: speex-1.2beta3
+2016-12-17 16:10:16.647771|DEBUG   |Windows Audio Session|   |WAS::startDevice-enter
+2016-12-17 16:10:16.654273|DEBUG   |Windows Audio Session|   |WAS::startDevice-leave
+2016-12-17 16:10:16.656774|DEBUG   |Windows Audio Session|   |WAS::openDevice-enter
+2016-12-17 16:10:16.687796|DEBUG   |Windows Audio Session|   |WAS Buffer size: 1056
+2016-12-17 16:10:16.690799|DEBUG   |Windows Audio Session|   |WAS::openDevice-leave
+2016-12-17 16:10:16.693301|DEBUG   |Windows Audio Session|   |WAS::startDevice-enter
+2016-12-17 16:10:16.702308|DEBUG   |Windows Audio Session|   |WAS::startDevice-leave
+2016-12-17 16:10:16.731328|DEVELOP |PktHandler    |   |Puzzle solve time: 12

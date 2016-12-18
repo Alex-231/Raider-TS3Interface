@@ -1,0 +1,10 @@
+﻿  SharedAPI.cpp
+c:\users\alex\documents\github\raider\assets\game\scripts\voip\lib\src\voipapi\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
+  TeamSpeakInterface.cpp
+  VoIPClient.cpp
+c:\users\alex\documents\github\raider\assets\game\scripts\voip\lib\src\voipapi\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
+     Creating library C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\x64\Release\TeamSpeak Interface.lib and object C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\x64\Release\TeamSpeak Interface.exp
+  Generating code
+  All 96 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\x64\Release\TeamSpeak Interface.dll
