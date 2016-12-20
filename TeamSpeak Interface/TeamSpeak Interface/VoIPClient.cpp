@@ -289,7 +289,7 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path,
 	SharedAPI::Log("Client lib version:");
 	SharedAPI::Log(version);
 
-	//ts3client_freeMemory(version);  /* Release dynamically allocated memory */
+	ts3client_freeMemory(version);  /* Release dynamically allocated memory */
 	version = "";
 
 	SLEEP(500);

@@ -1,9 +1,9 @@
-﻿  VoIPClient.cpp
-c:\users\alex\documents\github\raider\assets\game\scripts\voip\lib\src\voipapi\teamspeak interface\teamspeak interface\voipclient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
-  TeamSpeakInterface.cpp
+﻿  VoIPServer.cpp
+  VoIPClient.cpp
+c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\voipclient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
   SharedAPI.cpp
-c:\users\alex\documents\github\raider\assets\game\scripts\voip\lib\src\voipapi\teamspeak interface\teamspeak interface\voipclient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
+c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\voipclient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
   Generating Code...
-     Creating library C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\Debug\TeamSpeak Interface.lib and object C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\Debug\TeamSpeak Interface.exp
-  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\Debug\TeamSpeak Interface.dll
-  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\Debug\TeamSpeak Interface.pdb (Partial PDB)
+     Creating library C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Debug\TeamSpeak Interface.lib and object C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Debug\TeamSpeak Interface.exp
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Debug\TeamSpeak Interface.dll
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Debug\TeamSpeak Interface.pdb (Partial PDB)

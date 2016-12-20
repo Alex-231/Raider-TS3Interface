@@ -21,7 +21,7 @@
     <ClInclude Include="VoIPClient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TeamSpeakInterface.h">
+    <ClInclude Include="VoIPServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="VoIPClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TeamSpeakInterface.cpp">
+    <ClCompile Include="VoIPServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
