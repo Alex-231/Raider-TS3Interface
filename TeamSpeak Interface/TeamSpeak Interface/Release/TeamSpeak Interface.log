@@ -1,0 +1,10 @@
+﻿  SharedAPI.cpp
+c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
+  VoIPClient.cpp
+c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
+  VoIPServer.cpp
+     Creating library C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Release\TeamSpeakInterface.lib and object C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Release\TeamSpeakInterface.exp
+  Generating code
+  All 146 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\Release\TeamSpeakInterface.dll

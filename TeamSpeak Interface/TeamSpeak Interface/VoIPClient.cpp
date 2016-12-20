@@ -53,10 +53,10 @@ VoIPClient::~VoIPClient()
 *                               Contains error state when losing connection.
 */
 void onConnectStatusChangeEvent(uint64 serverConnectionHandlerID, int newStatus, unsigned int errorNumber) {
-	printf("Connect status changed: %llu %d %u\n", (unsigned long long)serverConnectionHandlerID, newStatus, errorNumber);
+	SharedAPI::Log((char*)((string)"Connect status changed : " + to_string(serverConnectionHandlerID) + " " + to_string(newStatus) + " " + to_string(errorNumber) + "\n").c_str());
 	/* Failed to connect ? */
 	if (newStatus == STATUS_DISCONNECTED && errorNumber == ERROR_failed_connection_initialisation) {
-		printf("Looks like there is no server running.\n");
+		SharedAPI::Log("Looks like there is no server running.\n");
 	}
 }
 
@@ -73,15 +73,15 @@ void onNewChannelEvent(uint64 serverConnectionHandlerID, uint64 channelID, uint6
 	char* name;
 	unsigned int error;
 
-	printf("onNewChannelEvent: %llu %llu %llu\n", (unsigned long long)serverConnectionHandlerID, (unsigned long long)channelID, (unsigned long long)channelParentID);
+	SharedAPI::Log((char*)((string)"onNewChannelEvent: " + to_string(serverConnectionHandlerID) + " " + to_string(channelID) + " " + to_string(channelParentID) + "\n").c_str());
 	if ((error = ts3client_getChannelVariableAsString(serverConnectionHandlerID, channelID, CHANNEL_NAME, &name)) == ERROR_ok) {
-		printf("New channel: %llu %s \n", (unsigned long long)channelID, name);
+		SharedAPI::Log((char*)((string)"New channel: " + to_string(channelID) + " " + string(name) + "\n").c_str());
 		ts3client_freeMemory(name);  /* Release dynamically allocated memory only if function succeeded */
 	}
 	else {
 		char* errormsg;
 		if (ts3client_getErrorMessage(error, &errormsg) == ERROR_ok) {
-			printf("Error getting channel name in onNewChannelEvent: %s\n", errormsg);
+			SharedAPI::Log((char*)((string)"Error getting channel name in onNewChannelEvent: " + string(errormsg) + "\n").c_str());
 			ts3client_freeMemory(errormsg);
 		}
 	}
@@ -103,7 +103,8 @@ void onNewChannelCreatedEvent(uint64 serverConnectionHandlerID, uint64 channelID
 	/* Query channel name from channel ID */
 	if (ts3client_getChannelVariableAsString(serverConnectionHandlerID, channelID, CHANNEL_NAME, &name) != ERROR_ok)
 		return;
-	printf("New channel created: %s\n", name);
+
+	SharedAPI::Log((char*)((string)"New channel created: " + string(name) + "\n").c_str());
 	ts3client_freeMemory(name);  /* Release dynamically allocated memory only if function succeeded */
 }
 
@@ -117,7 +118,7 @@ void onNewChannelCreatedEvent(uint64 serverConnectionHandlerID, uint64 channelID
 *   invokerName               - Name of the client who deleted the channel
 */
 void onDelChannelEvent(uint64 serverConnectionHandlerID, uint64 channelID, anyID invokerID, const char* invokerName, const char* invokerUniqueIdentifier) {
-	printf("Channel ID %llu deleted by %s (%u)\n", (unsigned long long)channelID, invokerName, invokerID);
+	SharedAPI::Log((char*)((string)"Channel ID " + to_string(channelID) +  " deleted by " + string(invokerName) + " " + to_string(invokerID) + "\n").c_str());
 }
 
 /*
@@ -132,7 +133,7 @@ void onDelChannelEvent(uint64 serverConnectionHandlerID, uint64 channelID, anyID
 *                               Values: ENTER_VISIBILITY, RETAIN_VISIBILITY, LEAVE_VISIBILITY
 */
 void onClientMoveEvent(uint64 serverConnectionHandlerID, anyID clientID, uint64 oldChannelID, uint64 newChannelID, int visibility, const char* moveMessage) {
-	printf("ClientID %u moves from channel %llu to %llu with message %s\n", clientID, (unsigned long long)oldChannelID, (unsigned long long)newChannelID, moveMessage);
+	SharedAPI::Log((char*)((string)"ClientID " + to_string(clientID) + " moves from channel " + to_string(oldChannelID) + " to " + to_string(newChannelID) + "\n").c_str());
 }
 
 /*
@@ -152,7 +153,8 @@ void onClientMoveSubscriptionEvent(uint64 serverConnectionHandlerID, anyID clien
 	/* Query client nickname from ID */
 	if (ts3client_getClientVariableAsString(serverConnectionHandlerID, clientID, CLIENT_NICKNAME, &name) != ERROR_ok)
 		return;
-	printf("New client: %s\n", name);
+
+	SharedAPI::Log((char*)((string)"New client: " + string(name) + "\n").c_str());
 	ts3client_freeMemory(name);  /* Release dynamically allocated memory only if function succeeded */
 }
 
@@ -168,7 +170,7 @@ void onClientMoveSubscriptionEvent(uint64 serverConnectionHandlerID, anyID clien
 *   timeoutMessage            - Optional message giving the reason for the timeout
 */
 void onClientMoveTimeoutEvent(uint64 serverConnectionHandlerID, anyID clientID, uint64 oldChannelID, uint64 newChannelID, int visibility, const char* timeoutMessage) {
-	printf("ClientID %u timeouts with message %s\n", clientID, timeoutMessage);
+	SharedAPI::Log((char*)((string)"ClientID " + to_string(clientID) + " timeouts with message " + string(timeoutMessage) + "\n").c_str());
 }
 
 /*
@@ -187,16 +189,16 @@ void onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int status, int i
 	if (ts3client_getClientVariableAsString(serverConnectionHandlerID, clientID, CLIENT_NICKNAME, &name) != ERROR_ok)
 		return;
 	if (status == STATUS_TALKING) {
-		printf("Client \"%s\" starts talking.\n", name);
+		SharedAPI::Log((char*)((string)"Client " + string(name) + " starts talking.\n").c_str());
 	}
 	else {
-		printf("Client \"%s\" stops talking.\n", name);
+		SharedAPI::Log((char*)((string)"Client " + string(name) + " stops talking.\n").c_str());
 	}
 	ts3client_freeMemory(name);  /* Release dynamically allocated memory only if function succeeded */
 }
 
 void onServerErrorEvent(uint64 serverConnectionHandlerID, const char* errorMessage, unsigned int error, const char* returnCode, const char* extraMessage) {
-	printf("Error for server %llu: %s %s\n", (unsigned long long)serverConnectionHandlerID, errorMessage, extraMessage);
+	SharedAPI::Log((char*)((string)"Error for server " + to_string(serverConnectionHandlerID) + ": " + string(errorMessage) + " " + string(extraMessage) + "\n").c_str());
 }
 
 unsigned int error;
@@ -207,10 +209,7 @@ char* identity_;
 bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks)
 {
 	//Debug Logging
-	SharedAPI::Log("StartClient Called");
-	SharedAPI::Log(username);
-	SharedAPI::Log(ipAddr);
-	SharedAPI::Log(path);
+	SharedAPI::Log((char*)((string)"StartClient(" + string(username) + ", " + string(ipAddr) + ", " + to_string(port) + ", " + string(path) + ")").c_str());
 
 	/* Callback function pointers */
 	/* It is sufficient to only assign those callback functions you are using. When adding more callbacks, add those function pointers here. */
@@ -231,8 +230,7 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path,
 	if (error != ERROR_ok) {
 		char* errormsg;
 		if (ts3client_getErrorMessage(error, &errormsg) == ERROR_ok) {
-			SharedAPI::Log("Error initialzing serverlib:");
-			SharedAPI::Log(errormsg);
+			SharedAPI::Log((char*)((string)"Error initialzing serverlib: " + string(errormsg)).c_str());
 			ts3client_freeMemory(errormsg);
 		}
 		return false;
@@ -240,37 +238,32 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path,
 
 	/* Spawn a new server connection handler using the default port and store the server ID */
 	if ((error = ts3client_spawnNewServerConnectionHandler(0, &scHandlerID)) != ERROR_ok) {
-		SharedAPI::Log("Error spawning server connection handler:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error spawning server connection handler: " + to_string(error)).c_str());
 		return false;
 	}
 
 	/* Open default capture device */
 	/* Passing empty string for mode and NULL or empty string for device will open the default device */
 	if ((error = ts3client_openCaptureDevice(scHandlerID, "", NULL)) != ERROR_ok) {
-		SharedAPI::Log("Error opening capture device:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error opening capture device: " + to_string(error)).c_str());
 	}
 
 	/* Open default playback device */
 	/* Passing empty string for mode and NULL or empty string for device will open the default device */
 	if ((error = ts3client_openPlaybackDevice(scHandlerID, "", NULL)) != ERROR_ok) {
-		SharedAPI::Log("Error opening playback device:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error opening playback device: " + to_string(error)).c_str());
 	}
 
 	/* Create a new client identity */
 	/* In your real application you should do this only once, store the assigned identity locally and then reuse it. */
 	if ((error = ts3client_createIdentity(&identity_)) != ERROR_ok) {
-		SharedAPI::Log("Error creating identity:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error creating identity: " + to_string(error)).c_str());
 		return false;
 	}
 
 	/* Connect to server on localhost:9987 with nickname "client", no default channel, no default channel password and server password "secret" */
 	if ((error = ts3client_startConnection(scHandlerID, identity_, ipAddr, port, username, NULL, "", "secret")) != ERROR_ok) {
-		SharedAPI::Log("Error connecting to server:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error connecting to server: " + to_string(error)).c_str());
 		return false;
 	}
 
@@ -281,14 +274,12 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path,
 
 	/* Query and print client lib version */
 	if ((error = ts3client_getClientLibVersion(&version)) != ERROR_ok) {
-		SharedAPI::Log("Failed to get clientlib version:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Failed to get clientlib version: " + to_string(error)).c_str());
 		return false;
 	}
 
-	SharedAPI::Log("Client lib version:");
-	SharedAPI::Log(version);
-
+	SharedAPI::Log((char*)((string)"Client lib version: " + string(version)).c_str());
+	
 	ts3client_freeMemory(version);  /* Release dynamically allocated memory */
 	version = "";
 
@@ -299,10 +290,10 @@ bool VoIPClient::StartClient(char* username, char* ipAddr, int port, char* path,
 
 bool VoIPClient::StopClient()
 {
+	char* formattedMessage = "";
 	/* Disconnect from server */
 	if ((error = ts3client_stopConnection(scHandlerID, "leaving")) != ERROR_ok) {
-		SharedAPI::Log("Error stopping connection:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error stopping connection: " + to_string(error)).c_str());
 		return false;
 	}
 
@@ -310,15 +301,13 @@ bool VoIPClient::StopClient()
 
 	/* Destroy server connection handler */
 	if ((error = ts3client_destroyServerConnectionHandler(scHandlerID)) != ERROR_ok) {
-		SharedAPI::Log("Error destroying clientlib:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Error destroying clientlib: " + to_string(error)).c_str());
 		return false;
 	}
 
 	/* Shutdown client lib */
 	if ((error = ts3client_destroyClientLib()) != ERROR_ok) {
-		SharedAPI::Log("Failed to destroy clientlib:");
-		SharedAPI::Log((char*)std::to_string(error).c_str());
+		SharedAPI::Log((char*)((string)"Failed to destroy clientlib: " + to_string(error)).c_str());
 		return false;
 	}
 

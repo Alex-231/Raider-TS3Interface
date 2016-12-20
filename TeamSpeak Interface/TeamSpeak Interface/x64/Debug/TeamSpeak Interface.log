@@ -1,9 +1,10 @@
-﻿  VoIPServer.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (TeamSpeak Interface.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  VoIPServer.cpp
   VoIPClient.cpp
 c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\voipclient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
   SharedAPI.cpp
 c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\voipclient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
   Generating Code...
-     Creating library C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeak Interface.lib and object C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeak Interface.exp
-  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeak Interface.dll
-  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeak Interface.pdb (Partial PDB)
+     Creating library C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeakInterface.lib and object C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeakInterface.exp
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeakInterface.dll
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Debug\TeamSpeakInterface.pdb (Partial PDB)

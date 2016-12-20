@@ -1,10 +1,11 @@
-﻿  SharedAPI.cpp
-c:\users\alex\documents\github\raider\assets\game\scripts\voip\lib\src\voipapi\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
-  TeamSpeakInterface.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (TeamSpeak Interface.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  SharedAPI.cpp
+c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
   VoIPClient.cpp
-c:\users\alex\documents\github\raider\assets\game\scripts\voip\lib\src\voipapi\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
-     Creating library C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\x64\Release\TeamSpeak Interface.lib and object C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\x64\Release\TeamSpeak Interface.exp
+c:\users\alex\documents\github\raider-ts3interface\teamspeak interface\teamspeak interface\VoIPClient.h(17): warning C4091: 'static ': ignored on left of 'VoIPClient' when no variable is declared
+  VoIPServer.cpp
+     Creating library C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Release\TeamSpeakInterface.lib and object C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Release\TeamSpeakInterface.exp
   Generating code
-  All 96 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 146 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider\Assets\Game\scripts\voip\lib\src\VoIPAPI\TeamSpeak Interface\x64\Release\TeamSpeak Interface.dll
+  TeamSpeak Interface.vcxproj -> C:\Users\Alex\Documents\GitHub\Raider-TS3Interface\TeamSpeak Interface\x64\Release\TeamSpeakInterface.dll

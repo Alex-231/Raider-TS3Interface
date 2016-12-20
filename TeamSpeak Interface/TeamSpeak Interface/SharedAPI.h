@@ -1,6 +1,7 @@
 #pragma once
 
 #include <teamspeak/clientlib.h>
+#include <teamspeak\serverlib.h>
 #include <string>
 
 using namespace std;
@@ -11,14 +12,17 @@ using namespace std;
 //It looks nice so it's staying...
 
 #define EXPORT __declspec(dllexport)
+#define SERVER_EXPORT __declspec(dllexport)
+#define CLIENT_EXPORT __declspec(dllexport)
 
 extern "C"
 {
 	EXPORT void SetupLogging(void(*_logCallback)(char* message));
 	//VoIPClient bool StartClient(char* username, char* ipAddr, void(*disconnectCallback)(int exitCode, char* exitDetails));
-	EXPORT bool StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks);
-	EXPORT bool StopClient();
-	EXPORT bool StartServer();
+	CLIENT_EXPORT bool StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks);
+	CLIENT_EXPORT bool StopClient();
+	SERVER_EXPORT bool StartServer(char* ipAddr, int port, char* serverName, ServerLibFunctions callbacks);
+	SERVER_EXPORT bool StopServer();
 }
 
 class SharedAPI

@@ -1,5 +1,6 @@
 #include "SharedAPI.h"
 #include "VoIPClient.h"
+#include "VoIPServer.h"
 
 using namespace std;
 
@@ -14,14 +15,24 @@ SharedAPI::~SharedAPI()
 {
 }
 
-EXPORT bool StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks)
+CLIENT_EXPORT bool StartClient(char* username, char* ipAddr, int port, char* path, ClientUIFunctions callbacks)
 {
 	return VoIPClient::StartClient(username, ipAddr, port, path, callbacks);
 }
 
-EXPORT bool StopClient()
+CLIENT_EXPORT bool StopClient()
 {
 	return VoIPClient::StopClient();
+}
+
+SERVER_EXPORT bool StartServer(char* ipAddr, int port, char* serverName, ServerLibFunctions callbacks)
+{
+	return VoIPServer::StartServer(ipAddr, port, serverName, callbacks);
+}
+
+SERVER_EXPORT bool StopServer()
+{
+	return VoIPServer::StopServer();
 }
 
 void (*logCallback)(char* message);
